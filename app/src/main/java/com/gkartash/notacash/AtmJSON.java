@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class AtmJSON {
 
 
-    public JSONObject getJSON(String url) {
+    public static JSONObject getJSON(String url) {
         try {
             URL notacashRequest = new URL(url);
             HttpURLConnection urlConnection = (HttpURLConnection) notacashRequest.openConnection();

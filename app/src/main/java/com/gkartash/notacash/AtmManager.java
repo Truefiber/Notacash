@@ -8,7 +8,10 @@ import android.net.NetworkInfo;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Gennadiy on 23.06.2014.
@@ -16,6 +19,8 @@ import java.util.List;
 public class AtmManager {
 
     public static final String TAG = "AtmManager";
+
+    private static final String CATEGORIES_REQUEST_URL = "http://notacash.com/api/categories";
 
     private Context mContext;
 
@@ -25,10 +30,6 @@ public class AtmManager {
 
     public AtmManager(Context context) {
         mContext = context;
-    }
-
-    public List<String> getCategories() {
-        return null;
     }
 
     public List<String> getSubcategories(int category) {
@@ -70,6 +71,17 @@ public class AtmManager {
 
     public Location getCurrentLocation() {
         return  currentLocation;
+    }
+
+    public Map<String, List<String>> getCategories () {
+
+        if (!isConnected()) {
+            Toast.makeText(mContext, "Check you internet connection", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
+        JSONObject categoryJSON = AtmJSON.getJSON(CATEGORIES_REQUEST_URL);
+
     }
 
 

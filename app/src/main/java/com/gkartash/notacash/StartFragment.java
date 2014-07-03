@@ -114,11 +114,14 @@ public class StartFragment extends Fragment {
         proximityTextView.setText(proximity);
     }
 
-    public void initSpinners() {
+    private void initSpinners() {
         if (category == null) {
+
 
         }
     }
+
+
 
 
 }
