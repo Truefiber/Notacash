@@ -2,11 +2,13 @@ package com.gkartash.notacash;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,7 @@ public class StartFragment extends Fragment {
     List<String> category;
     Map<Integer, List<String>> subCategory;
     AtmManager mAtmManager;
+    ProgressDialog dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,10 @@ public class StartFragment extends Fragment {
         findButton = (Button) view.findViewById(R.id.findButton);
         findButton.setOnClickListener(findButtonListener);
         proximitySeekBar.setOnSeekBarChangeListener(proximitySeekBarListener);
-        initSpinners();
+        new DataUpdater().execute();
+
+
+
 
 
         return view;
@@ -115,11 +121,41 @@ public class StartFragment extends Fragment {
     }
 
     private void initSpinners() {
-        if (category == null) {
+
+    }
+
+    private class DataUpdater extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(getActivity());
+            dialog.setMessage(getString(R.string.progress_message));
+            dialog.setIndeterminate(true);
+            dialog.setTitle(getString(R.string.progress_title));
+            dialog.setCancelable(true);
+            dialog.show();
+
 
 
         }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mAtmManager.updateData();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            dialog.dismiss();
+            initSpinners();
+        }
     }
+
+
+
+
 
 
 

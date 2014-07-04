@@ -10,8 +10,8 @@
     <string name="empty_list_button">Find ATM</string>
     <string name="internetconnection">Check your internet connection</string>
     <string name="location_provider_error">Unable to update location. Check you location provider status</string>
-    <string name="progress_title">Wait a few seconds</string>
-    <string name="progress_message">Data is updated</string>
+    <string name="progress_title">Updating data...</string>
+    <string name="progress_message">Please wait</string>
     <string name="proximityTextView">Proximity %s m</string>
     <string name="lookinForTextView">I`m looking for:</string>
     <string name="findButton">Find ATMs</string>
