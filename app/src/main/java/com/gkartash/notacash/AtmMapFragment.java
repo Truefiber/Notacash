@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -58,6 +59,9 @@ public class AtmMapFragment extends MapFragment {
 
     }
 
+    //getData called by fragment in case of one-pane view, or by underlying activity in
+    // case of multi-pane view
+
     public void getData(Bundle inputData) {
         proximityInDegrees = inputData.getInt(ARG_PROXIMITY) / METERS_PER_DEGREE;
         currentLocation = inputData.getParcelable(ARG_LOCATION);
@@ -68,8 +72,10 @@ public class AtmMapFragment extends MapFragment {
 
 
 
+
     }
 
+    //Add ATMs to map, update camera zoom and location to fit all ATMs
     private void showATM(List<AtmObject> atms) {
         atmBounds = new LatLngBounds(new LatLng(currentLocation.getLatitude() -
                 proximityInDegrees, currentLocation.getLongitude() - proximityInDegrees),
@@ -97,6 +103,8 @@ public class AtmMapFragment extends MapFragment {
 
     }
 
+
+    //Background download and parsing of JSONArray
     private class GetATMList extends AsyncTask<String, Void, List<AtmObject>> {
         @Override
         protected List<AtmObject> doInBackground(String... strings) {

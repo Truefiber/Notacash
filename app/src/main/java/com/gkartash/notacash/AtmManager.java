@@ -167,8 +167,11 @@ public class AtmManager {
             return;
 
         }
-        updateCategories();
-        updateSubCategories();
+
+        if (categoriesMap == null) {
+            updateCategories();
+            updateSubCategories();
+        }
 
     }
 

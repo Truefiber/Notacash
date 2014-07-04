@@ -12,12 +12,14 @@ import java.util.TimerTask;
 
 /**
  * Created by Gennadiy on 22.06.2014.
+ * One-time location update.
+ *
  */
 public class FindLocation {
 
     private static final String TAG = "FindLocation";
 
-    private static final int TIMEOUT = 5000; //milliseconds before returning last know location
+    private static final int TIMEOUT = 5000; //milliseconds before returning last known location
     FixedLocation result;
     Timer fixTimer;                          //will return last known location after timeout
     LocationManager lm;
