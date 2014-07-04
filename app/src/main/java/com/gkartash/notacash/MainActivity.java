@@ -4,14 +4,11 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 /**
  * Created by Gennadiy on 22.06.2014.
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements StartFragment.OnFindButtonPressed{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,4 +31,18 @@ public class MainActivity extends Activity {
     }
 
 
+    @Override
+    public void onPress(Bundle settings) {
+        FragmentManager fm = getFragmentManager();
+        Fragment mapFragment = new AtmMapFragment();
+        mapFragment.setArguments(settings);
+        fm.beginTransaction()
+                .replace(R.id.fragmentContainer, mapFragment)
+                .addToBackStack(null)
+                .commit();
+
+
+
+
+    }
 }

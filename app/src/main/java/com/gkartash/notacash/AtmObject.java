@@ -2,15 +2,37 @@ package com.gkartash.notacash;
 
 import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by Gennadiy on 22.06.2014.
  */
 public class AtmObject {
 
-    private Location location;
+    private LatLng location;
     private String bank;
     private String locationType;
     private String workTime;
+
+    private String city;
+
+    private String adress;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return adress;
+    }
+
+    public void setAddress(String adress) {
+        this.adress = adress;
+    }
 
     public String getLocationType() {
         return locationType;
@@ -20,11 +42,11 @@ public class AtmObject {
         this.locationType = locationType;
     }
 
-    public Location getLocation() {
+    public LatLng getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(LatLng location) {
         this.location = location;
     }
 

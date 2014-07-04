@@ -16,5 +16,6 @@
     <string name="lookinForTextView">I`m looking for:</string>
     <string name="findButton">Find ATMs</string>
     <string name="bankTextView">Bank</string>
+    <string name="atm_list">Downloading ATM locations...</string>
 
 </resources>
